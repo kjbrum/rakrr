@@ -26,7 +26,7 @@ var siftr = module.exports = function(url, opts, cb) {
 
 
     // Example URL
-    var url = 'http://corporatecontracts.com/blog';
+    // var url = 'http://corporatecontracts.com/blog';
     collectData(url, opts);
 
 };
@@ -37,42 +37,28 @@ function collectData(url, opts) {
 
         // Check to make sure there are no errors
         if(!err) {
-
-            if(!opts.template) {
-                console.log(warn('You must supply a template file.'));
-                process.exit(1);
-            }
-
+            // Load the html with cheerio
+            var $        = cheerio.load(html);
+            var results  = {};
             var template = getTemplate(opts.template);
 
-            console.log(template);
+            for(var x=0; x < template.loops.length; x++) {
+                var loop = template.loops[x];
 
-            for(var i = 0; i < Object.keys(template).length; i++) {
-                var selector = template[i];
-                console.log(selector);
+                // $('"'+loop.loopSelector+'"').each(function(i, el) {
+                $("#main .post").filter(function(i, el) {
+                    var data   = $(this);
+                    results[i] = {};
+
+                    results[i]['post_title']   = data.find('.post-title a').text();
+                    results[i]['post_content'] = data.find('.entry-content').text();
+                    results[i]['post_author']  = data.find('.post-header-meta .the-author a').text();
+                    results[i]['post_date']    = data.find('.post-header-meta .the-time').text();
+                });
             }
 
-            process.exit(0);
-
-            // Load the html with cheerio
-            // var $ = cheerio.load(html);
-
-            // var pieces, band, album, year;
-            // var result = {};
-
-            // $('.blog-posts .post h3 a').each(function(i) {
-            //     var data = $(this).text();
-            //     pieces = data.split(/[-(]+/);
-
-            //     result[i] = {};
-
-            //     result[i].band  = pieces[0].trim();
-            //     result[i].album = pieces[1].trim();
-            //     result[i].year  = pieces[2].replace(/[\D]+/, '');
-            // });
-
-            // console.log(success('New Albums:'));
-            // console.log(success(JSON.stringify(result, null, 4)));
+            console.log(success('Posts:'));
+            console.log(success(JSON.stringify(results, null, 4)));
 
         } else {
             console.log(error('Error: ' + err));

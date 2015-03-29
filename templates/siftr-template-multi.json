@@ -9,6 +9,12 @@
         "post_author": ".post-header-meta .the-author a",
         "post_date": ".post-header-meta .the-time"
       }
+    },
+    {
+      "loopSelector": ".widget_archive",
+      "data": {
+        "date": "li a"
+      }
     }
   ]
 }

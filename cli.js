@@ -24,6 +24,11 @@ if(!cli.input[0]) {
     process.exit(1);
 }
 
+if(!cli.flags.template) {
+    console.log(chalk.yellow('You must supply a template file.'));
+    process.exit(1);
+}
+
 siftr(cli.input[0], cli.flags, function(err, res) {
     if(err) {
         if(err.noStack) {
