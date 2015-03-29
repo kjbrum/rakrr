@@ -41,23 +41,36 @@ function collectData(url, opts) {
             var $        = cheerio.load(html);
             var results  = {};
             var template = getTemplate(opts.template);
+            var loops    = template.loops;
 
-            for(var x=0; x < template.loops.length; x++) {
-                var loop = template.loops[x];
+            // Loop through supplied loops
+            for(var l in loops) {
+                if(loops.hasOwnProperty(l)) {
+                    var loop = loops[l];
 
-                // $('"'+loop.loopSelector+'"').each(function(i, el) {
-                $("#main .post").filter(function(i, el) {
-                    var data   = $(this);
-                    results[i] = {};
+                    $(loop.loopSelector).each(function(i, el) {
+                        var selector = $(this);
+                        results[i]   = {};
 
-                    results[i]['post_title']   = data.find('.post-title a').text();
-                    results[i]['post_content'] = data.find('.entry-content').text();
-                    results[i]['post_author']  = data.find('.post-header-meta .the-author a').text();
-                    results[i]['post_date']    = data.find('.post-header-meta .the-time').text();
-                });
+                        // console.log(success(JSON.stringify(loop.data, null, 4)));
+
+                        // Loop through the data we need to get
+                        var data = loop.data;
+                        for(var d in data) {
+                            if(data.hasOwnProperty(d)) {
+                                // console.log(opts.stripTags);
+                                if(opts.stripTags == true) {
+                                    results[i][d] = selector.find(data[d]).text();
+                                } else {
+                                    results[i][d] = selector.find(data[d]).html();
+                                }
+                            }
+                        }
+                    });
+                }
             }
 
-            console.log(success('Posts:'));
+            // console.log(success('Posts:'));
             console.log(success(JSON.stringify(results, null, 4)));
 
         } else {
