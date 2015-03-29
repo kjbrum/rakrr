@@ -1,15 +1,15 @@
 #! /usr/bin/env node
 'use strict';
 var meow   = require('meow');
-var scrapr = require('./');
+var rakrr = require('./');
 
 var cli = meow({
   help: [
     'Usage:',
-    '  scrapr <url> <options>',
+    '  rakrr <url> <options>',
     '',
     'Example:',
-    '  scrapr http://deathdjentcore.net --template=scrapr-template --strip-tags',
+    '  rakrr http://deathdjentcore.net --template=rakrr-template --strip-tags',
     '',
     'Options:',
     '  --template    The JSON template file to use for extracting the data.',
@@ -23,7 +23,7 @@ if (!cli.input[0]) {
     process.exit(1);
 }
 
-scrapr(cli.input[0], cli.flags, function (err, res) {
+rakrr(cli.input[0], cli.flags, function (err, res) {
     if (err) {
         if (err.noStack) {
             console.error(err.message);

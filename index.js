@@ -10,7 +10,7 @@ var success = chalk.green;
 var warn    = chalk.yellow;
 var error   = chalk.red;
 
-var scrapr = module.exports = function(url, opts, cb) {
+var rakrr = module.exports = function(url, opts, cb) {
     if(typeof opts !== 'object') {
         cb = opts;
         opts = {};
