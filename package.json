@@ -1,0 +1,36 @@
+{
+  "name": "scrapr",
+  "version": "0.0.1",
+  "description": "Node CLI to easily scrape the web with predefined JSON templates.",
+  "license": "MIT",
+  "repository": "kjbrum/scrapr",
+  "bin": {
+    "scrapr": "cli.js"
+  },
+  "preferGlobal": true,
+  "author": {
+    "name": "Kyle Brumm",
+    "email": "kjbrum@msn.com",
+    "url": "http://kylebrumm.com"
+  },
+  "files": [
+    "cli.js",
+    "index.js"
+  ],
+  "keywords": [
+    "webscraper",
+    "scrape",
+    "scraping",
+    "cli",
+    "bin",
+    "site",
+    "web",
+    "content"
+  ],
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "cheerio": "^0.19.0",
+    "meow": "^3.1.0",
+    "request": "^2.54.0"
+  }
+}
