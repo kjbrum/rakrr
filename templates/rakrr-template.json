@@ -1,0 +1,13 @@
+{
+  "loops": {
+    ".blog-posts .post": {
+      "data": {
+        "post_title": ".post-title a",
+        "post_content": ".entry-content",
+        "post_author": ".post-header-meta .the-author a",
+        "post_date": ".post-header-meta .the-time"
+      },
+      "pagination": "#post-nav .previous a[href]"
+    }
+  }
+}

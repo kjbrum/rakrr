@@ -1,4 +1,4 @@
-# rakrr - (WIP)
+# Rakrr - (WIP)
 
 > Node CLI to easily scrape the web with predefined JSON templates.
 
