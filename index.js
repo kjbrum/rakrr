@@ -10,7 +10,7 @@ var warn    = chalk.yellow;
 var error   = chalk.red;
 
 
-var rakrr = module.exports = function(url, opts, cb) {
+var siftr = module.exports = function(url, opts, cb) {
     if(typeof opts !== 'object') {
         cb = opts;
         opts = {};

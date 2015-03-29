@@ -1,11 +1,11 @@
 {
-  "name": "rakrr",
+  "name": "siftr",
   "version": "0.0.1",
   "description": "Node CLI to easily scrape the web with predefined JSON templates.",
   "license": "MIT",
-  "repository": "kjbrum/rakrr",
+  "repository": "kjbrum/siftr",
   "bin": {
-    "rakrr": "cli.js"
+    "siftr": "cli.js"
   },
   "preferGlobal": true,
   "author": {

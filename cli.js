@@ -2,15 +2,15 @@
 'use strict';
 var meow  = require('meow');
 var chalk   = require('chalk');
-var rakrr = require('./');
+var siftr = require('./');
 
 var cli = meow({
     help: [
         'Usage:',
-        '  rakrr <url> <options>',
+        '  siftr <url> <options>',
         '',
         'Example:',
-        '  rakrr http://deathdjentcore.net --template=rakrr-template --strip-tags',
+        '  siftr http://deathdjentcore.net --template=siftr-template --strip-tags',
         '',
         'Options:',
         '  --template    The JSON template file to use for extracting the data.',
@@ -24,7 +24,7 @@ if(!cli.input[0]) {
     process.exit(1);
 }
 
-rakrr(cli.input[0], cli.flags, function(err, res) {
+siftr(cli.input[0], cli.flags, function(err, res) {
     if(err) {
         if(err.noStack) {
             console.error(err.message);
