@@ -1,24 +1,24 @@
-# Scrapr - (WIP)
+# rakrr - (WIP)
 
 > Node CLI to easily scrape the web with predefined JSON templates.
 
 ### Install
 
 ```
-$ npm install -g scrapr
+$ npm install -g rakrr
 ```
 
 ```
-$ scrapr --help
+$ rakrr --help
 
   Usage:,
-    scrapr <url> <options>
+    rakrr <url> <options>
 
   Example:
-    scrapr thechangelog.com --template=scrapr-template --strip-tags
+    rakrr thechangelog.com --template=templates/rakrr-template.json --strip-tags
 
   Options:
-    --template    The JSON template file to use for extracting the data.
+    --template    Path to a JSON template file to use for extracting the data.
     --format      Output format: (json|csv)
     --strip-tags  Strip HTML tags from the returned results.
 ```
