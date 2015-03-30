@@ -13,19 +13,26 @@
     "email": "kjbrum@msn.com",
     "url": "http://kylebrumm.com"
   },
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "files": [
     "cli.js",
     "index.js"
   ],
   "keywords": [
     "webscraper",
-    "scrape",
     "scraping",
+    "content",
+    "scrape",
+    "scrapr",
+    "json",
+    "site",
+    "csv",
+    "xml",
     "cli",
     "bin",
-    "site",
-    "web",
-    "content"
+    "web"
   ],
   "dependencies": {
     "chalk": "^1.0.0",

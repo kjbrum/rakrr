@@ -3,7 +3,9 @@
 var meow  = require('meow');
 var chalk   = require('chalk');
 var siftr = require('./');
+var warn = chalk.yellow;
 
+// Handle the arguments
 var cli = meow({
     help: [
         'Usage:',
@@ -13,23 +15,27 @@ var cli = meow({
         '  siftr http://sassbreak.com --template=templates/siftr-template-sassbreak.json --strip-tags',
         '',
         'Options:',
-        '  --template    Path to a JSON template file to use for extracting the data.',
+        '  --template    Path to a JSON template file to use for extracting the data. (Default: scrapr-template.json)',
         '  --filename    Pass a file name to use when saving the data.',
         '  --format      Output format: json|csv|xml',
         '  --strip-tags  Strip HTML tags from the returned results.'
     ].join('\n')
 });
 
+// Check if a URL is supplied
 if(!cli.input[0]) {
-    console.error(chalk.yellow('You must provide a URL.'));
+    console.error(warn('You must provide a URL.'));
     process.exit(1);
 }
 
+// Check if a template file is supplied
 if(!cli.flags.template) {
-    console.log(chalk.yellow('You must supply a template file.'));
-    process.exit(1);
+    cli.flags.template = 'siftr-template.json';
+    // console.log(warn('You must supply a template file.'));
+    // process.exit(1);
 }
 
+// Call the siftr module
 siftr(cli.input[0], cli.flags, function(err, res) {
     if(err) {
         if(err.noStack) {

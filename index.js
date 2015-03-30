@@ -98,12 +98,6 @@ function saveFile(opts, results) {
         var filename = 'siftr-results.json'
     }
 
-    /**
-     *  To-Do:
-     *      Check if file already exists
-     *      Save as correct format (--format=json|csv)
-     *
-     */
     fs.writeFile(filename, JSON.stringify(results, null, 4), function(err) {
         if(err) {
             return console.log(err);
