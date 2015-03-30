@@ -1,0 +1,15 @@
+{
+  "_comment": "http://sassbreak.com/",
+  "loops": [
+    {
+      "loopSelector": ".post .post__item",
+      "pagination": ".pagination .pagination__arrow-next[href]",
+      "data": {
+        "post_title": ".post__title",
+        "post_content": "p",
+        "post_author": ".post__author",
+        "post_date": ".post__date"
+      }
+    }
+  ]
+}

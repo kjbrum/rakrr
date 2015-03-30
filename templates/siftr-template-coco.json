@@ -1,4 +1,5 @@
 {
+  "_comment": "http://corporatecontracts.com/blog/",
   "loops": [
     {
       "loopSelector": "#main .post",
@@ -8,12 +9,6 @@
         "post_content": ".entry-content",
         "post_author": ".post-header-meta .the-author a",
         "post_date": ".post-header-meta .the-time"
-      }
-    },
-    {
-      "loopSelector": ".widget_archive",
-      "data": {
-        "date": "li a"
       }
     }
   ]

@@ -10,12 +10,12 @@ var cli = meow({
         '  siftr <url> <options>',
         '',
         'Example:',
-        '  siftr http://deathdjentcore.net --template=siftr-template --strip-tags',
+        '  siftr http://sassbreak.com --template=templates/siftr-template-sassbreak.json --strip-tags',
         '',
         'Options:',
-        '  --template    The JSON template file to use for extracting the data.',
+        '  --template    Path to a JSON template file to use for extracting the data.',
         '  --filename    Pass a file name to use when saving the data.',
-        '  --format      Output format: (json|csv)',
+        '  --format      Output format: json|csv|xml',
         '  --strip-tags  Strip HTML tags from the returned results.'
     ].join('\n')
 });

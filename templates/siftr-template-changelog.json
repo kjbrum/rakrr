@@ -1,0 +1,12 @@
+{
+  "_comment": "http://thechangelog.com/",
+  "loops": [
+    {
+      "loopSelector": ".page-container .post",
+      "data": {
+        "post_title": ".post-title__text",
+        "post_content": ".post__content"
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "_comment": "http://tympanus.net/codrops/category/tutorials/",
+  "loops": [
+    {
+      "loopSelector": ".ct-archive-container .post",
+      "pagination": ".ct-postnav li:last-of-type a[href]",
+      "data": {
+        "post_title": "h3 a",
+        "post_content": ".ct-feat-excerpt",
+        "post_thumb": ".ct-latest-thumb img[src]",
+        "post_meta": ".ct-subline"
+      }
+    },
+    {
+      "loopSelector": ".ct-widget-default .post",
+      "data": {
+        "post_title": "h3 a",
+        "post_thumb": ".ct-latest-thumb img[src]"
+      }
+    }
+  ]
+}

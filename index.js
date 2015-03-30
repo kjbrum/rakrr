@@ -52,17 +52,15 @@ function collectData(url, opts) {
                         var selector = $(this);
                         results[i]   = {};
 
-                        // console.log(success(JSON.stringify(loop.data, null, 4)));
-
                         // Loop through the data we need to get
                         var data = loop.data;
                         for(var d in data) {
                             if(data.hasOwnProperty(d)) {
-                                // console.log(opts.stripTags);
+                                // Remove tags if flag is set
                                 if(opts.stripTags) {
-                                    results[i][d] = selector.find(data[d]).text();
+                                    results[i][d] = selector.find(data[d]).text().replace(/(\n|\t)/gm, '').trim();
                                 } else {
-                                    results[i][d] = selector.find(data[d]).html();
+                                    results[i][d] = selector.find(data[d]).html().replace(/(\n|\t)/gm, '').trim();
                                 }
                             }
                         }
@@ -70,19 +68,8 @@ function collectData(url, opts) {
                 }
             }
 
-            if(opts.filename) {
-                var filename = opts.filename+'.json';
-            } else {
-                var filename = 'siftr-results.json'
-            }
-
-            fs.writeFile(filename, JSON.stringify(results, null, 4), function(err) {
-                if(err) {
-                    return console.log(err);
-                }
-
-                console.log(success('Data has been saved to '+filename+'.json'));
-            });
+            // Save our data to a file
+            saveFile(opts, results);
 
             // console.log(success(JSON.stringify(results, null, 4)));
 
@@ -101,4 +88,27 @@ function getTemplate(template) {
         process.exit(0);
     }
     return JSON.parse(template);
+}
+
+
+function saveFile(opts, results) {
+    if(opts.filename) {
+        var filename = opts.filename+'.json';
+    } else {
+        var filename = 'siftr-results.json'
+    }
+
+    /**
+     *  To-Do:
+     *      Check if file already exists
+     *      Save as correct format (--format=json|csv)
+     *
+     */
+    fs.writeFile(filename, JSON.stringify(results, null, 4), function(err) {
+        if(err) {
+            return console.log(err);
+        }
+
+        console.log(success('Data has been saved to '+filename+'.json'));
+    });
 }
