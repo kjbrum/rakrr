@@ -14,6 +14,7 @@ var cli = meow({
         '',
         'Options:',
         '  --template    The JSON template file to use for extracting the data.',
+        '  --filename    Pass a file name to use when saving the data.',
         '  --format      Output format: (json|csv)',
         '  --strip-tags  Strip HTML tags from the returned results.'
     ].join('\n')

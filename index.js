@@ -59,7 +59,7 @@ function collectData(url, opts) {
                         for(var d in data) {
                             if(data.hasOwnProperty(d)) {
                                 // console.log(opts.stripTags);
-                                if(opts.stripTags == true) {
+                                if(opts.stripTags) {
                                     results[i][d] = selector.find(data[d]).text();
                                 } else {
                                     results[i][d] = selector.find(data[d]).html();
@@ -70,9 +70,13 @@ function collectData(url, opts) {
                 }
             }
 
-            var filename = 'siftr-results'
+            if(opts.filename) {
+                var filename = opts.filename+'.json';
+            } else {
+                var filename = 'siftr-results.json'
+            }
 
-            fs.writeFile(filename+'.json', JSON.stringify(results, null, 4), function(err) {
+            fs.writeFile(filename, JSON.stringify(results, null, 4), function(err) {
                 if(err) {
                     return console.log(err);
                 }
