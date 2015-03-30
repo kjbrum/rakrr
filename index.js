@@ -70,8 +70,17 @@ function collectData(url, opts) {
                 }
             }
 
-            // console.log(success('Posts:'));
-            console.log(success(JSON.stringify(results, null, 4)));
+            var filename = 'siftr-results'
+
+            fs.writeFile(filename+'.json', JSON.stringify(results, null, 4), function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+
+                console.log(success('Data has been saved to '+filename+'.json'));
+            });
+
+            // console.log(success(JSON.stringify(results, null, 4)));
 
         } else {
             console.log(error('Error: ' + err));
