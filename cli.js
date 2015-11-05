@@ -1,5 +1,6 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 'use strict';
+
 var meow  = require('meow');
 var chalk   = require('chalk');
 var siftr = require('./');
